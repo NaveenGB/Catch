@@ -1,0 +1,91 @@
+import UIKit
+import Foundation
+
+//Task 1
+struct CartProductResult {
+    var id: Int
+    var title: String
+    var quantity: Int
+}
+let cartProducts = [
+CartProductResult(id: 1, title: "nike shoe 1", quantity: 5), CartProductResult(id: 2, title: "nike shoe 2", quantity: 2), CartProductResult(id: 3, title: "soap", quantity: 6)
+]
+
+
+
+for i in cartProducts{
+    print(i.id, "-" ,i.title)
+}
+
+
+//Task 2
+
+struct SearchProductResult {
+    var id: Int
+    var title: String
+    var position: Int
+}
+let productList: [SearchProductResult] = [ SearchProductResult(id: 1, title: "nike shoe 3", position: 1), SearchProductResult(id: 5, title: "pen", position: 2)
+]
+
+
+func printProducts(_ : [SearchProductResult]){
+    for details in productList{
+        print(details.id, details.title, details.position)
+    }
+}
+
+printProducts(productList)
+
+
+
+//Task 3
+
+func printWithDelay(product1: CartProductResult, product2: CartProductResult, completion: (@escaping ()-> Void)) {
+    for id in cartProducts{
+        print("Wait for 1 second")
+        print(id.id)
+    }
+    print("call completion")
+}
+
+printWithDelay(product1: cartProducts[0], product2: cartProducts[1]) {
+    print("Done printing products")
+}
+
+//Task 4
+
+let json = """
+{
+  "id": "1",
+  "options": [
+    {
+      "id": "11",
+      "options": [
+        {
+          "id": "111",
+          "options": []
+} ]
+}, {
+      "id": "2",
+      "options": [
+        {
+          "id": "21",
+          "options": []
+}, {
+          "id": "22",
+          "options": [
+            {
+              "id": "221",
+              "options": []
+} ]
+} ]
+} ]
+}
+""".data(using: .utf8)
+
+struct IdList: Codable, Identifiable
+{
+    var id: String
+    //var options: [options]
+}
