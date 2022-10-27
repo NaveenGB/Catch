@@ -1,0 +1,13 @@
+//
+//  Constants.swift
+//  Calculater
+//
+//  Created by G Bannikoppa, Naveen on 26/10/22.
+//
+
+import Foundation
+import CoreGraphics
+
+struct Constants {
+    static let padding: CGFloat = 12.0
+}
